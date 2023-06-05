@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 // import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -6,6 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 import { FaGooglePlusG } from 'react-icons/fa';
 import { TbFidgetSpinner } from "react-icons/tb"
 import { toast } from 'react-hot-toast';
+import { savedUser } from '../../../API/auth';
 
 const Login = () => {
     const { logIn, loading, setLoading, googleSignIn, passwordReset } = useAuth();
@@ -37,7 +38,7 @@ const Login = () => {
                         title: 'Login successful',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                 }
                 navigate(from, { replace: true });
             })
@@ -52,6 +53,8 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                // User Put API Called 
+                savedUser(result.user)
                 if (loggedUser?.email) {
                     Swal.fire({
                         position: 'top',
@@ -59,7 +62,7 @@ const Login = () => {
                         title: 'Login successful',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                    })
                     navigate(from, { replace: true })
                 }
             })
@@ -107,7 +110,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="email" className="input input-bordered" />
+                                <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

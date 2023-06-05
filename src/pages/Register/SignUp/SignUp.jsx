@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import { FaGooglePlusG } from 'react-icons/fa';
+import { savedUser } from '../../../API/auth';
 
 const SignUp = () => {
     const { createUser, googleSignIn, loading, setLoading, updateProfileInfo, logOut } = useAuth();
@@ -33,7 +34,10 @@ const SignUp = () => {
                     .then(result => {
                             updateProfileInfo(name, image)
                                 .then(() => { 
+                                    // User Put API Called 
+                                    savedUser(result.user)
                                     if(result.user.email){
+                                        
                                         setLoading(false);
                                         alert("Sign Up Successful");
                                         logOut()
@@ -55,6 +59,8 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
+                    // User Put API Called 
+                    savedUser(result.user)
                 if (loggedUser?.email) {
                     Swal.fire({
                         title: 'Login Successfully',

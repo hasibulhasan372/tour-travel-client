@@ -6,6 +6,8 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Register/Login/Login";
 import SignUp from "../pages/Register/SignUp/SignUp";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
+import DashBoardLayout from "../Layout/DashBoardLayout";
+import AddRoom from "../pages/Dashborad/AddRoom/AddRoom";
 
   const router = createBrowserRouter([
     {
@@ -31,6 +33,16 @@ import RoomDetails from "../pages/RoomDetails/RoomDetails";
         }
       ]
     },
+    {
+      path: "dashboard",
+      element: <DashBoardLayout></DashBoardLayout>,
+      children: [
+        {
+          path: "addRoom",
+          element: <AddRoom></AddRoom>
+        }
+      ]
+    }
   ]);
 
 export default router;
