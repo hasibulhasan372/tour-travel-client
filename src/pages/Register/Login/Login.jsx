@@ -30,7 +30,6 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
                 if (loggedUser) {
                     Swal.fire({
                         position: 'top',

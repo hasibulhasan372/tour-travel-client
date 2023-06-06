@@ -1,8 +1,8 @@
 export const savedUser = user =>{
     const updateUser = {
-        email : user?.email
+        email : user?.email,
     }
-    fetch(`http://localhost:5000/users/${user?.email}`,{
+    fetch(`${import.meta.env.VITE_SERVER_LINK}/users/${user?.email}`,{
         method: "PUT",
         headers: {
             "content-type" : "applications/json"
@@ -10,21 +10,27 @@ export const savedUser = user =>{
         body: JSON.stringify(updateUser)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
 };
 
 
-// Host API 
-export const becomeHost = email =>{
+// // Host API 
+export const becomeHost = async email =>{
     const updateUser = {
-        role: "host"
-    }
-   return fetch(`http://localhost:5000/users/${email}`,{
-        method: "PUT",
-        headers: {
-            "content-type" : "applications/json"
-        },
-        body: JSON.stringify(updateUser)
-    })
-    .then(res => res.json())
+              role: 'host',
+            }
+          
+            return fetch(`${import.meta.env.VITE_SERVER_LINK}/users/${email}`, {
+              method: 'PUT',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(updateUser),
+            }).then(res => res.json())
 };
+
+// Get Host
+export const getHost = async (email)=>{
+    const res =  await fetch(`${import.meta.env.VITE_SERVER_LINK}/users/${email}`)
+    const user = await res.json();
+    return user?.role;
+}

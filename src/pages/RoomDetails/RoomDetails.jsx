@@ -5,14 +5,12 @@ import RoomHeader from "./RoomHeader";
 
 
 const RoomDetails = () => {
-    const roomData = useLoaderData()
-    console.log(roomData)
+    const roomData = useLoaderData();
     return (
-       <div className="max-w-[1170px] mx-auto">
-         <div className="text-center space-y-8">
+       <div className="max-w-[1070px] mx-auto">
+         <div className="text-center flex flex-col space-y-8">
             <RoomHeader roomData={roomData}></RoomHeader>
-            <h2>Details</h2>
-            <BookingDate></BookingDate>
+            <BookingDate roomData={roomData}></BookingDate>
     
         </div>
        </div>
