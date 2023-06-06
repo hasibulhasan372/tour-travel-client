@@ -7,7 +7,9 @@ import Login from "../pages/Register/Login/Login";
 import SignUp from "../pages/Register/SignUp/SignUp";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import DashBoardLayout from "../Layout/DashBoardLayout";
+import PrivateRoute from "../Routes/PrivateRoute";
 import AddRoom from "../pages/Dashborad/AddRoom/AddRoom";
+import { room } from "../API/room";
 
   const router = createBrowserRouter([
     {
@@ -21,7 +23,9 @@ import AddRoom from "../pages/Dashborad/AddRoom/AddRoom";
         },
         {
           path: "room/:id",
-          element: <RoomDetails></RoomDetails>
+          element: <PrivateRoute><RoomDetails></RoomDetails></PrivateRoute>,
+          loader: ({params}) => room(params.id)
+
         },
         {
             path: "login",
@@ -35,7 +39,7 @@ import AddRoom from "../pages/Dashborad/AddRoom/AddRoom";
     },
     {
       path: "dashboard",
-      element: <DashBoardLayout></DashBoardLayout>,
+      element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
       children: [
         {
           path: "addRoom",

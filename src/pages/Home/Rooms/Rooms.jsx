@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import Container from "../../shared/Container/Container";
 import RoomCard from "./RoomCard";
 import { useSearchParams } from "react-router-dom";
+import { allRooms } from "../../../API/room";
 
 
 const Rooms = () => {
@@ -13,8 +14,7 @@ const Rooms = () => {
 
     useEffect(() =>{
         setLoading(true)
-        fetch('rooms.json')
-        .then(res =>res.json())
+        allRooms()
         .then(data => {
             if(category){
                 const filterData = data.filter(room => room.category === category);

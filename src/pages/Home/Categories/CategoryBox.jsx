@@ -23,7 +23,7 @@ const CategoryBox = ({ category }) => {
         navigate(url)
     }
     return (
-        <div onClick={handleCategoryFilter} className="flex cursor-pointer flex-col text-gray-500 hover:text-black justify-center border-b-2 border-transparent hover:border-gray-300 items-center gap-2 transition duration-500">
+        <div onClick={handleCategoryFilter} className="flex cursor-pointer flex-col text-lg text-gray-500 hover:text-black justify-center border-b-2 border-transparent hover:border-gray-300 items-center gap-2 transition duration-500">
             <Icon size={26}></Icon>
             <h3 className="pb-1">{label}</h3>
         </div>

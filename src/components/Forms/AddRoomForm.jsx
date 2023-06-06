@@ -1,15 +1,17 @@
 
-import { DateRange } from 'react-date-range'
+
 import { TbFidgetSpinner } from 'react-icons/tb'
-import { categories } from '../Categories/categoriesData'
+import { categories } from '../../pages/Home/Categories/CategoryList'
+import { DateRangePicker } from 'rsuite'
 const AddRoomForm = ({
   handleSubmit,
-  dates,
   handleDates,
+  dates,
   loading,
   handleImageChange,
   uploadButtonText,
 }) => {
+    
   return (
     <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
       <form onSubmit={handleSubmit}>
@@ -50,11 +52,13 @@ const AddRoomForm = ({
               <label htmlFor='location' className='block text-gray-600'>
                 Select Availability Range
               </label>
-              <DateRange
-                onChange={handleDates}
-                ranges={[dates]}
-                rangeColors={['#F43F5E']}
-              />
+            <DateRangePicker 
+            value={dates}
+            onChange={handleDates}
+             format="yyyy-MM-dd"
+             defaultCalendarValue={[new Date('2023-5-06'), new Date('2023-5-06')]}
+            ></DateRangePicker>
+ 
             </div>
           </div>
           <div className='space-y-6'>

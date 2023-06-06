@@ -1,15 +1,19 @@
 
+import { useLoaderData } from "react-router-dom";
 import BookingDate from "./BookingDate";
-import Heading from "./Heading";
+import RoomHeader from "./RoomHeader";
 
 
 const RoomDetails = () => {
+    const roomData = useLoaderData()
+    console.log(roomData)
     return (
        <div className="max-w-[1170px] mx-auto">
          <div className="text-center space-y-8">
-            <Heading title="The 'Salgame Retreat'" subtitle="Dhaka"></Heading>
+            <RoomHeader roomData={roomData}></RoomHeader>
             <h2>Details</h2>
             <BookingDate></BookingDate>
+    
         </div>
        </div>
     );
