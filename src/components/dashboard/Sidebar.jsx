@@ -20,18 +20,24 @@ const Sidebar = () => {
     }
     return (
         <div className="w-72 border py-4 px-2 max-h-screen overflow-x-hidden bg-gray-100 hidden md:block ">
-             <div className="w-full  text-center bg-pink-50 rounded-lg py-2 pl-20">
-                    <Logo></Logo>
-                </div>
+            <div className="w-full  text-center bg-pink-50 rounded-lg py-2 pl-20">
+                <Logo></Logo>
+            </div>
             <div className="flex flex-col justify-between items-center mt-12 h-[calc(100vh-130px)]">
                 <div className=" text-center  w-full">
-                    
+
                     <div className="mb-8 space-x-2">
-                    <span className="border rounded-lg px-4 py-2 bg-white peer-checked:bg-pink-400 font-bold">Guest</span>
-                    <span className="border rounded-lg px-4 py-2 bg-white peer-checked:bg-pink-400 font-bold">Host</span>
+                        <span className="border rounded-lg px-4 py-2 bg-white peer-checked:bg-pink-400 font-bold">Guest</span>
+                        <span className="border rounded-lg px-4 py-2 bg-white peer-checked:bg-pink-400 font-bold">Host</span>
                     </div>
+                    {/* AddRoom  */}
                     <div className="py-2 bg-slate-200 flex items-center justify-center w-full ">
-                    <Link to="/dashboard/addRoom" className="flex items-center text-lg font-bold"><FaHome className="mr-3"></FaHome> Add Room</Link>
+                        <Link to="/dashboard/addRoom" className="flex items-center text-lg font-bold"><FaHome className="mr-3"></FaHome> Add Room</Link>
+                    </div>
+
+                    {/* My Bookings  */}
+                    <div className="lg:mt-4">
+                        <Link to="/dashboard/myBookings" className="text-xl font-bold">My Bookings</Link>
                     </div>
 
                 </div>
