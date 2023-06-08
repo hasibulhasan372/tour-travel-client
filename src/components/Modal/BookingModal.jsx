@@ -2,8 +2,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns';
 import { Fragment} from 'react'
 
-const BookingModal = ({isOpen, closeModal, bookingInfo}) => {
-    const {guest, host, price, to, from, location} = bookingInfo;
+const BookingModal = ({isOpen, closeModal, bookingInfo, handlePayment}) => {
+    const {guest, host, price, to, from, location, title} = bookingInfo;
   
    
     return (
@@ -38,6 +38,12 @@ const BookingModal = ({isOpen, closeModal, bookingInfo}) => {
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
+                      Place: {title}
+                    </Dialog.Title>
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg font-medium leading-6 text-gray-900"
+                    >
                        Location: {location}
                     </Dialog.Title>
                     <div className="mt-2">
@@ -52,8 +58,10 @@ const BookingModal = ({isOpen, closeModal, bookingInfo}) => {
                       <p className='text-lg text-black pb-3'>Check Out: {format(new Date (to), 'PP')} </p>
                       <p className='text-lg text-black pb-3'>Total Rent: ${price} </p>
                     </div>
-  
-                    <div className="mt-4">
+
+                    {/* Close and pay button  */}
+                  <div className='flex justify-between '>
+                  <div className="mt-4">
                       <button
                         type="button"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -62,6 +70,18 @@ const BookingModal = ({isOpen, closeModal, bookingInfo}) => {
                        Cancel
                       </button>
                     </div>
+                    
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-red-200 px-4 py-2 text-sm font-medium text-blue-900 hover:text-white hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={handlePayment}
+                      >
+                       Pay ${price}
+                      </button>
+                    </div>
+                  </div>
+
                   </Dialog.Panel>
                 </Transition.Child>
               </div>

@@ -7,6 +7,6 @@ export const savedImage = async (image) =>{
         method: "POST",
         body: formData
     })
-    const data = res.json()
+    const data = await res.json()
     return data;
 }
